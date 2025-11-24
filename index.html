@@ -6,22 +6,39 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="page">
+        <div class="card">
+            <header class="hero">
+                <h1>AVENGERS CHARACTER SEARCH</h1>
+            </header>
 
-    <h1>AVENGERS CHARACTER SEARCH</h1>
+            <main class="content">
+                <form id="search-form" class="search-form">
+                    <label for="search" class="search-label">
+                        Search by Full Name or Alias
+                    </label>
+                    <div class="search-row">
+                        <input
+                            type="text"
+                            id="search"
+                            name="search"
+                            class="search-input"
+                            placeholder="e.g. Captain America or Steve Rogers"
+                        >
+                        <button id="search-btn" type="button" class="search-button">
+                            Search
+                        </button>
+                    </div>
+                </form>
 
-    <div class="search-container">
-        <label for="search">Search by Full Name or Alias</label>
-        <input 
-            type="text" 
-            id="search" 
-            name="search" 
-            placeholder="Captain America"
-        >
-        <button id="search-btn">Search</button>
+                <section class="result-section">
+                    <h2>RESULT</h2>
+                    <hr class="divider">
+                    <div id="result"></div>
+                </section>
+            </main>
+        </div>
     </div>
-
-    <h2>RESULT</h2>
-    <div id="result"></div>
 
     <script src="app.js"></script>
 </body>
