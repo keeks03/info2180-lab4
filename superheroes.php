@@ -62,11 +62,39 @@ $superheroes = [
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
 ];
-
 ?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+<?php
+
+// Get and sanitize input
+$query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_STRING);
+
+// No query → return whole list
+if ($query === null || $query === '') {
+    echo "<ul>";
+    foreach ($superheroes as $hero) {
+        echo "<li>" . htmlspecialchars($hero['alias']) . "</li>";
+    }
+    echo "</ul>";
+    exit;
+}
+
+// Search logic
+$query = strtolower(trim($query));
+$match = null;
+
+foreach ($superheroes as $hero) {
+    if (strtolower($hero['name']) === $query || strtolower($hero['alias']) === $query) {
+        $match = $hero;
+        break;
+    }
+}
+
+if ($match) {
+    echo "<h3>" . htmlspecialchars($match['alias']) . "</h3>";
+    echo "<h4>" . htmlspecialchars($match['name']) . "</h4>";
+    echo "<p>" . htmlspecialchars($match['biography']) . "</p>";
+} else {
+    echo "<p>SUPERHERO NOT FOUND</p>";
+}
+?>
