@@ -62,9 +62,6 @@ $superheroes = [
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
 ];
-?>
-
-<?php
 
 // Get and sanitize input
 $query = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_STRING);
@@ -97,4 +94,5 @@ if ($match) {
 } else {
     echo "<p>SUPERHERO NOT FOUND</p>";
 }
+
 ?>
